@@ -1,0 +1,48 @@
+{
+  "name": "review-desk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0 || >=26.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k \"tsx watch apps/api/src/server.ts\" \"vite --config apps/web/vite.config.ts\"",
+    "db:setup": "tsx scripts/setup.ts",
+    "build": "vite build --config apps/web/vite.config.ts && tsc -p apps/api/tsconfig.json",
+    "start": "node dist/apps/api/src/server.js",
+    "typecheck": "vue-tsc --noEmit -p apps/web/tsconfig.json && tsc --noEmit -p apps/api/tsconfig.json",
+    "test": "vitest run",
+    "test:e2e": "node scripts/e2e.mjs",
+    "e2e:serve": "npm run db:setup && npm run build && npm start",
+    "test:smoke": "node scripts/smoke.mjs",
+    "measure": "node --import tsx scripts/measure.ts",
+    "format": "prettier --write apps packages scripts tests *.ts *.json"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "sharp": "^0.35.5",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.3",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "concurrently": "^9.2.1",
+    "prettier": "^3.9.10",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vitest": "^5.0.5",
+    "vue-tsc": "^3.1.1"
+  }
+}

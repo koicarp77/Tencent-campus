@@ -1,0 +1,6 @@
+{
+  "name": "@review-desk/web",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0"
+}
