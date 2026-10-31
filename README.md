@@ -74,3 +74,5 @@ npm run test:e2e -- --grep '主动注入500'
 - Chromium 缺失：先执行 `npx playwright install chromium`。
 - 页面显示无法连接服务：开发模式检查 API 3001 进程；生产先构建再 `npm start`。
 - 本地草稿在刷新/关闭时可能丢失；退出提醒无法保证浏览器崩溃时恢复，请显式保存。数据库备份应在服务关闭后复制 SQLite 文件，或使用 SQLite 备份工具。
+
+完整干净克隆验证：提交当前改动后运行 `node scripts/verify-clean.mjs`。脚本创建无依赖、无数据库的临时克隆并运行安装和完整验证，默认要求本机 Chrome，可用 `E2E_BROWSER_CHANNEL=chromium` 选择已安装的 Playwright Chromium。原始日志见 [clean-run.log](docs/verification/clean-run.log)。

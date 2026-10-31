@@ -5,3 +5,5 @@ playwright-report/
 test-results/
 *.log
 .DS_Store
+
+!docs/verification/clean-run.log

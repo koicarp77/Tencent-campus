@@ -1,0 +1,113 @@
+RUN git clone --no-hardlinks /Users/koi_carp/Tencent-campus/ /var/folders/kq/pxlnwyyd30q5p4shl2h4kxmc0000gn/T/review-desk-clean-iNxaPx/checkout
+Cloning into '/var/folders/kq/pxlnwyyd30q5p4shl2h4kxmc0000gn/T/review-desk-clean-iNxaPx/checkout'...
+done.
+RUN npm ci
+npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
+
+added 228 packages, and audited 232 packages in 2s
+
+60 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm warn allow-scripts 3 packages have install scripts not yet covered by allowScripts:
+npm warn allow-scripts   better-sqlite3@12.11.1 (install: prebuild-install || node-gyp rebuild --release)
+npm warn allow-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn allow-scripts   fsevents@2.3.3 (install: (install scripts present))
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+RUN npm run db:setup
+
+> review-desk@1.0.0 db:setup
+> tsx scripts/setup.ts
+
+数据库迁移、演示数据初始化完成（保留现有批注）
+RUN npm run typecheck
+
+> review-desk@1.0.0 typecheck
+> vue-tsc --noEmit -p apps/web/tsconfig.json && tsc --noEmit -p apps/api/tsconfig.json
+
+RUN npm test
+
+> review-desk@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /private/var/folders/kq/pxlnwyyd30q5p4shl2h4kxmc0000gn/T/review-desk-clean-iNxaPx/checkout
+
+
+ Test Files  2 passed (2)
+      Tests  25 passed (25)
+   Start at  13:00:42
+   Duration  230ms (tests 41%, import 29%, transform 28%, worker 1%)
+
+RUN npm run build
+
+> review-desk@1.0.0 build
+> vite build --config apps/web/vite.config.ts && tsc -p apps/api/tsconfig.json
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+../../dist/web/index.html                  0.43 kB │ gzip:  0.33 kB
+../../dist/web/assets/index-nKN5YtBP.css  10.09 kB │ gzip:  3.08 kB
+../../dist/web/assets/index-DSHbYrnR.js   82.28 kB │ gzip: 32.97 kB
+✓ built in 261ms
+RUN npm run test:smoke
+
+> review-desk@1.0.0 test:smoke
+> node scripts/smoke.mjs
+
+数据库迁移、演示数据初始化完成（保留现有批注）
+审图台 http://127.0.0.1:49250
+数据库迁移、演示数据初始化完成（保留现有批注）
+审图台 http://127.0.0.1:49250
+审图台 http://127.0.0.1:49250
+PASS: 独立文件库、跨工作目录生产启动、重复初始化保留数据、保存后重启恢复、清空后重启无残留
+RUN npm run test:e2e
+
+> review-desk@1.0.0 test:e2e
+> node scripts/e2e.mjs
+
+[WebServer] (node:16459) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:16460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:16504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:16549) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:16553) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16554) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/review.spec.ts:34:1 › 落点、缩放、滚动、保存刷新及清空 (1.2s)
+(node:16573) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/review.spec.ts:66:1 › 主动注入500：保留草稿、恢复重试后真实持久化 (512ms)
+(node:16577) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/review.spec.ts:91:1 › 真实提交但响应丢失：核对成功，不重复写入 (381ms)
+(node:16581) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/review.spec.ts:107:1 › 两个页面冲突，保留B草稿且不覆盖A (623ms)
+(node:16586) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/review.spec.ts:122:1 › 保存后切人使用原身份，明确失败时留在原人 (467ms)
+(node:16590) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/e2e/review.spec.ts:145:1 › 已提交后另一人修改再丢失响应：核对为冲突 (349ms)
+(node:16594) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 tests/e2e/review.spec.ts:167:1 › 点击标记和留白不新增；空说明阻止保存 (467ms)
+(node:16598) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  8 tests/e2e/review.spec.ts:177:1 › 视口中心缩放锚点、窗口适应宽度和固定命中尺寸 (767ms)
+
+  8 passed (8.0s)
+PASS: 干净克隆无node_modules、无数据库，完整安装、初始化、检查、构建、重启验证及浏览器测试全部通过
