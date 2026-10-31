@@ -52,3 +52,9 @@ npm run test:e2e -- --grep '主动注入500'
 2026-10-31 在无 node_modules、无数据库的干净本地克隆中复验，`npm ci`（使用本机 npm 下载缓存，约2秒）、初始化、类型检查、25项单元/集成测试、生产构建、文件库重启验证、8项浏览器测试全部通过。完整输出见 [干净克隆日志](clean-run.log)。这是同机干净克隆验证，不代表已在另一台机器或Linux上执行。复现命令为 `node scripts/verify-clean.mjs`，它验证当前已提交的代码，默认使用本机Chrome；可通过 `E2E_BROWSER_CHANNEL` 选择已安装的Playwright浏览器。
 
 远程推送结果以最终提交说明和远程分支核对为准。GitHub网页公开访问HTTP 200，远程读取无分支，确认初始为空仓库。仓库链接由用户提供；本次聊天已回复链接，不声称已替用户向作业接收方发送消息。
+
+### 2026-10-31 远程推送阻塞
+
+已执行 `git push -u origin main`，以及显式HTTP/1.1和低速超时重试，均未收到推送成功确认。实际错误包括 `Operation too slow. Less than 1 bytes/sec transferred the last 20 seconds`；远程只读核对也报 `Failed to connect to github.com port 443`。最后 `curl -I --connect-timeout 10 --max-time 20` 检查同一仓库网页，10秒连接超时。因此不能确认远程分支或CI状态，不能声称已上传。
+
+代码、完整验证日志及交付文档已保存在本地Git提交中。网络恢复后在项目根目录执行 `git push -u origin main`，若GitHub提示认证，再使用有仓库写入权限的本机Git凭据完成。此前公开网页HTTP200及空仓库检查发生于2026-10-30，不代表当前网络连通。
