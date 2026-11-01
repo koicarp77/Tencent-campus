@@ -22,7 +22,9 @@ const body = (annotations: any[], baseRevision = 0, actorId = "a") => ({
 });
 beforeEach(() => {
   db = openDb(":memory:");
-  db.exec("INSERT INTO operators VALUES('a','甲'),('b','乙');");
+  db.exec(
+    "INSERT INTO operators VALUES('a','甲'),('b','乙'); INSERT INTO accounts VALUES('a','甲'),('b','乙'); INSERT INTO group_members VALUES('default-group','a','initial'),('default-group','b','initial');",
+  );
   for (const id of ["i", "j"])
     db.prepare("INSERT INTO images VALUES(?,?,?,?,?,?,0,?,?,?)").run(
       id,
@@ -35,7 +37,19 @@ beforeEach(() => {
       "initial",
       "initial",
     );
+  db.prepare(
+    "INSERT INTO image_groups SELECT id,'default-group' FROM images",
+  ).run();
 });
+async function authCookie(base: string) {
+  const response = await fetch(base + "/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: "甲" }),
+  });
+  expect(response.status).toBe(200);
+  return response.headers.get("set-cookie")!.split(";")[0];
+}
 afterEach(() => db.close());
 describe("真实SQLite整图事务", () => {
   it("保存、保留历史、删除重排、仅实际修改者更新、清空", () => {
@@ -56,9 +70,13 @@ describe("真实SQLite整图事务", () => {
     saveReview(db, "i", body([], 3));
     expect(review(db, "i").annotations).toEqual([]);
   });
-  it("旧版本409，不覆盖已保存数据", () => {
+  it("旧版本新增合并，不覆盖已保存数据", () => {
     saveReview(db, "i", body([mark("A")]));
-    expect(() => saveReview(db, "i", body([mark("B")]))).toThrow("其他人");
+    saveReview(db, "i", body([mark("B")]));
+    expect(review(db, "i").annotations.map((a) => a.content)).toEqual([
+      "A",
+      "B",
+    ]);
     expect(review(db, "i").annotations[0].content).toBe("A");
   });
   it("中途写入抛异常时，revision和所有批注历史一起回滚", () => {
@@ -123,7 +141,10 @@ describe("真实SQLite整图事务", () => {
         `http://127.0.0.1:${port}/api/images/i/annotations`,
         {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Cookie: await authCookie(`http://127.0.0.1:${port}`),
+          },
           body: JSON.stringify(
             body(Array.from({ length: 100 }, () => mark("中".repeat(500)))),
           ),
@@ -232,7 +253,9 @@ describe("上传API与持久化边界", () => {
       server.once("listening", resolve);
       server.once("error", reject);
     });
-    const url = `http://127.0.0.1:${(server.address() as any).port}/api/images`;
+    const base = `http://127.0.0.1:${(server.address() as any).port}`;
+    const url = base + "/api/images?groupId=default-group";
+    const headers = { Cookie: await authCookie(base) };
     try {
       const buffer = await sharp({
         create: { width: 24, height: 30, channels: 3, background: "blue" },
@@ -242,7 +265,11 @@ describe("上传API与持久化边界", () => {
       const form = new FormData();
       form.append("actorId", "a");
       form.append("image", new Blob([buffer]), "pretend.jpg");
-      const response = await fetch(url, { method: "POST", body: form });
+      const response = await fetch(url, {
+        method: "POST",
+        body: form,
+        headers,
+      });
       expect(response.status).toBe(201);
       const image = (await response.json()).image;
       expect(image.width).toBe(24);
@@ -262,10 +289,40 @@ describe("上传API与持久化边界", () => {
         const bad = new FormData();
         bad.append("actorId", "a");
         bad.append("image", new Blob([bytes]), "broken.png");
-        const result = await fetch(url, { method: "POST", body: bad });
+        const result = await fetch(url, { method: "POST", body: bad, headers });
         expect([413, 415]).toContain(result.status);
         expect(count()).toBe(before);
       }
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  });
+});
+
+describe("本机页面地址规范化", () => {
+  it("仅localhost页面跳转到实际监听地址，保留端口和图片查询，API不跳转", async () => {
+    const server = createApp(db).listen(0, "127.0.0.1");
+    await new Promise<void>((resolve, reject) => {
+      server.once("listening", resolve);
+      server.once("error", reject);
+    });
+    const port = (server.address() as any).port;
+    const base = `http://127.0.0.1:${port}`;
+    try {
+      const localhost = `http://localhost:${port}`;
+      const response = await fetch(localhost + "/?image=demo-detail", {
+        redirect: "manual",
+      });
+      expect(response.status).toBe(302);
+      expect(response.headers.get("location")).toBe(
+        base + "/?image=demo-detail",
+      );
+      expect(response.headers.get("cache-control")).toBe("no-store");
+      const health = await fetch(localhost + "/api/health", {
+        redirect: "manual",
+      });
+      expect(health.status).toBe(200);
+      expect(health.headers.get("location")).toBeNull();
     } finally {
       await new Promise<void>((resolve) => server.close(() => resolve()));
     }

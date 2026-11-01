@@ -7,3 +7,6 @@ test-results/
 .DS_Store
 
 !docs/verification/clean-run.log
+
+# Local implementation plan; keep it out of future repository snapshots.
+/审图打点项目实施方案.md

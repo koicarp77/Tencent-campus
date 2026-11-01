@@ -1,0 +1,1167 @@
+{
+  "runId": "2026-11-01T05-58-20-451Z-a29a08",
+  "startedAt": "2026-11-01T05:58:20.453Z",
+  "finishedAt": "2026-11-01T05:58:26.004Z",
+  "environment": {
+    "platform": "darwin 24.6.0",
+    "arch": "arm64",
+    "node": "v26.5.1",
+    "sqlite": "3.53.2",
+    "cpus": 10,
+    "cpuModel": "Apple M4",
+    "totalMemoryBytes": 17179869184,
+    "serverPid": 80866,
+    "scope": "同机loopback；独立生产构建子进程与临时磁盘SQLite；纯HTTP/SSE模拟账号，无浏览器渲染"
+  },
+  "configuration": {
+    "levels": [
+      2,
+      5
+    ],
+    "readSeconds": 1,
+    "writeIterations": 2,
+    "sseUpdates": 2,
+    "sseIntervalMs": 250,
+    "maxReadRequestsPerStage": 20000,
+    "requestTimeoutMs": 12000,
+    "accountCount": 5,
+    "realBrowserUsers": 0
+  },
+  "scenarios": [
+    {
+      "name": "read-read-normal-2",
+      "description": "闭环GET review；10条标记，每条100字；无思考时间",
+      "concurrency": 2,
+      "elapsedMs": 1000.1785000000002,
+      "http": {
+        "requests": 9146,
+        "successful": 9146,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 9144.367730360127,
+        "latencyMs": {
+          "samples": 9146,
+          "p50": 0.17675000000008367,
+          "p95": 0.30208300000003874,
+          "p99": 0.8482910000000174,
+          "max": 8.855540999999903,
+          "mean": 0.20834199431445466
+        },
+        "statusCounts": {
+          "200": 9146
+        },
+        "requestBytes": 0,
+        "responseBytes": 55177818
+      },
+      "byKind": {
+        "review-read": {
+          "requests": 9146,
+          "successful": 9146,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 9144.367730360127,
+          "latencyMs": {
+            "samples": 9146,
+            "p50": 0.17675000000008367,
+            "p95": 0.30208300000003874,
+            "p99": 0.8482910000000174,
+            "max": 8.855540999999903,
+            "mean": 0.20834199431445466
+          },
+          "statusCounts": {
+            "200": 9146
+          },
+          "requestBytes": 0,
+          "responseBytes": 55177818
+        }
+      },
+      "checks": [],
+      "resources": {
+        "samples": 1,
+        "peakRssBytes": 123027456,
+        "cpuPercentMax": 99.27579481777683,
+        "eventLoopDelayP95MsMax": 10.584063,
+        "eventLoopDelayMaxMs": 11.468799
+      },
+      "stopReason": "duration",
+      "configuredSeconds": 1
+    },
+    {
+      "name": "read-read-normal-5",
+      "description": "闭环GET review；10条标记，每条100字；无思考时间",
+      "concurrency": 5,
+      "elapsedMs": 1000.3782499999998,
+      "http": {
+        "requests": 10422,
+        "successful": 10422,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 10418.059369043662,
+        "latencyMs": {
+          "samples": 10422,
+          "p50": 0.3572919999996884,
+          "p95": 0.78512499999988,
+          "p99": 1.28387500000008,
+          "max": 4.303292000000056,
+          "mean": 0.47199704615237115
+        },
+        "statusCounts": {
+          "200": 10422
+        },
+        "requestBytes": 0,
+        "responseBytes": 62875926
+      },
+      "byKind": {
+        "review-read": {
+          "requests": 10422,
+          "successful": 10422,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 10418.059369043662,
+          "latencyMs": {
+            "samples": 10422,
+            "p50": 0.3572919999996884,
+            "p95": 0.78512499999988,
+            "p99": 1.28387500000008,
+            "max": 4.303292000000056,
+            "mean": 0.47199704615237115
+          },
+          "statusCounts": {
+            "200": 10422
+          },
+          "requestBytes": 0,
+          "responseBytes": 62875926
+        }
+      },
+      "checks": [],
+      "resources": {
+        "samples": 1,
+        "peakRssBytes": 122912768,
+        "cpuPercentMax": 101.12906905018882,
+        "eventLoopDelayP95MsMax": 10.690559,
+        "eventLoopDelayMaxMs": 11.862015
+      },
+      "stopReason": "duration",
+      "configuredSeconds": 1
+    },
+    {
+      "name": "read-read-maximum-5",
+      "description": "闭环GET review；100条标记，每条500字；无思考时间",
+      "concurrency": 5,
+      "elapsedMs": 1003.0616669999999,
+      "http": {
+        "requests": 1308,
+        "successful": 1308,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 1304.0075630763788,
+        "latencyMs": {
+          "samples": 1308,
+          "p50": 3.106250000000273,
+          "p95": 6.264083999999457,
+          "p99": 7.14449999999988,
+          "max": 8.012624999999844,
+          "mean": 3.8196941261467776
+        },
+        "statusCounts": {
+          "200": 1308
+        },
+        "requestBytes": 0,
+        "responseBytes": 233719980
+      },
+      "byKind": {
+        "review-read": {
+          "requests": 1308,
+          "successful": 1308,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 1304.0075630763788,
+          "latencyMs": {
+            "samples": 1308,
+            "p50": 3.106250000000273,
+            "p95": 6.264083999999457,
+            "p99": 7.14449999999988,
+            "max": 8.012624999999844,
+            "mean": 3.8196941261467776
+          },
+          "statusCounts": {
+            "200": 1308
+          },
+          "requestBytes": 0,
+          "responseBytes": 233719980
+        }
+      },
+      "checks": [],
+      "resources": {
+        "samples": 1,
+        "peakRssBytes": 157171712,
+        "cpuPercentMax": 99.27775135202054,
+        "eventLoopDelayP95MsMax": 12.640255,
+        "eventLoopDelayMaxMs": 13.041663
+      },
+      "stopReason": "duration",
+      "configuredSeconds": 1
+    },
+    {
+      "name": "write-independent-2",
+      "description": "每个worker编辑自己的图片，20次沿成功响应版本增量保存；每图10条标记",
+      "concurrency": 2,
+      "elapsedMs": 4.34954099999959,
+      "http": {
+        "requests": 4,
+        "successful": 4,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 919.6372674726775,
+        "latencyMs": {
+          "samples": 4,
+          "p50": 1.336833000000297,
+          "p95": 2.7685419999997976,
+          "p99": 2.7685419999997976,
+          "max": 2.7685419999997976,
+          "mean": 1.9041250000002492
+        },
+        "statusCounts": {
+          "200": 4
+        },
+        "requestBytes": 2004,
+        "responseBytes": 24440
+      },
+      "byKind": {
+        "annotation-write": {
+          "requests": 4,
+          "successful": 4,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 919.6372674726775,
+          "latencyMs": {
+            "samples": 4,
+            "p50": 1.336833000000297,
+            "p95": 2.7685419999997976,
+            "p99": 2.7685419999997976,
+            "max": 2.7685419999997976,
+            "mean": 1.9041250000002492
+          },
+          "statusCounts": {
+            "200": 4
+          },
+          "requestBytes": 2004,
+          "responseBytes": 24440
+        }
+      },
+      "checks": [
+        {
+          "name": "worker-0-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 2,
+            "revision": 3,
+            "count": 10
+          },
+          "scenario": "write-independent-2"
+        },
+        {
+          "name": "worker-1-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 2,
+            "revision": 3,
+            "count": 10
+          },
+          "scenario": "write-independent-2"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      },
+      "acknowledgedWrites": 4
+    },
+    {
+      "name": "write-independent-5",
+      "description": "每个worker编辑自己的图片，20次沿成功响应版本增量保存；每图10条标记",
+      "concurrency": 5,
+      "elapsedMs": 4.289708000000246,
+      "http": {
+        "requests": 10,
+        "successful": 10,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 2331.1610021007086,
+        "latencyMs": {
+          "samples": 10,
+          "p50": 1.5525829999996859,
+          "p95": 3.136083000000326,
+          "p99": 3.136083000000326,
+          "max": 3.136083000000326,
+          "mean": 1.713787400000092
+        },
+        "statusCounts": {
+          "200": 10
+        },
+        "requestBytes": 5010,
+        "responseBytes": 61100
+      },
+      "byKind": {
+        "annotation-write": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 2331.1610021007086,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 1.5525829999996859,
+            "p95": 3.136083000000326,
+            "p99": 3.136083000000326,
+            "max": 3.136083000000326,
+            "mean": 1.713787400000092
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 5010,
+          "responseBytes": 61100
+        }
+      },
+      "checks": [
+        {
+          "name": "worker-0-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 2,
+            "revision": 3,
+            "count": 10
+          },
+          "scenario": "write-independent-5"
+        },
+        {
+          "name": "worker-1-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 2,
+            "revision": 3,
+            "count": 10
+          },
+          "scenario": "write-independent-5"
+        },
+        {
+          "name": "worker-2-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 2,
+            "revision": 3,
+            "count": 10
+          },
+          "scenario": "write-independent-5"
+        },
+        {
+          "name": "worker-3-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 2,
+            "revision": 3,
+            "count": 10
+          },
+          "scenario": "write-independent-5"
+        },
+        {
+          "name": "worker-4-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 2,
+            "revision": 3,
+            "count": 10
+          },
+          "scenario": "write-independent-5"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      },
+      "acknowledgedWrites": 10
+    },
+    {
+      "name": "same-marker-2",
+      "description": "所有账号从同一基准版本同时修改同一个标记，每人不同内容；检查分叉及版本",
+      "concurrency": 2,
+      "elapsedMs": 0.914082999999664,
+      "http": {
+        "requests": 2,
+        "successful": 2,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 2187.9851173260363,
+        "latencyMs": {
+          "samples": 2,
+          "p50": 0.4574170000005324,
+          "p95": 0.8095000000002983,
+          "p99": 0.8095000000002983,
+          "max": 0.8095000000002983,
+          "mean": 0.6334585000004154
+        },
+        "statusCounts": {
+          "200": 2
+        },
+        "requestBytes": 1000,
+        "responseBytes": 2409
+      },
+      "byKind": {
+        "concurrent-same-marker": {
+          "requests": 2,
+          "successful": 2,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 2187.9851173260363,
+          "latencyMs": {
+            "samples": 2,
+            "p50": 0.4574170000005324,
+            "p95": 0.8095000000002983,
+            "p99": 0.8095000000002983,
+            "max": 0.8095000000002983,
+            "mean": 0.6334585000004154
+          },
+          "statusCounts": {
+            "200": 2
+          },
+          "requestBytes": 1000,
+          "responseBytes": 2409
+        }
+      },
+      "checks": [
+        {
+          "name": "all-concurrent-writes-acknowledged",
+          "passed": true,
+          "detail": {
+            "statuses": [
+              200,
+              200
+            ]
+          },
+          "scenario": "same-marker-2"
+        },
+        {
+          "name": "all-distinct-contents-persisted",
+          "passed": true,
+          "detail": {
+            "count": 2,
+            "revision": 3,
+            "expected": 2
+          },
+          "scenario": "same-marker-2"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      }
+    },
+    {
+      "name": "same-marker-5",
+      "description": "所有账号从同一基准版本同时修改同一个标记，每人不同内容；检查分叉及版本",
+      "concurrency": 5,
+      "elapsedMs": 1.668416000000434,
+      "http": {
+        "requests": 5,
+        "successful": 5,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 2996.85450151443,
+        "latencyMs": {
+          "samples": 5,
+          "p50": 1.0750420000003942,
+          "p95": 1.5675419999997757,
+          "p99": 1.5675419999997757,
+          "max": 1.5675419999997757,
+          "mean": 1.0704916000000595
+        },
+        "statusCounts": {
+          "200": 5
+        },
+        "requestBytes": 2500,
+        "responseBytes": 10671
+      },
+      "byKind": {
+        "concurrent-same-marker": {
+          "requests": 5,
+          "successful": 5,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 2996.85450151443,
+          "latencyMs": {
+            "samples": 5,
+            "p50": 1.0750420000003942,
+            "p95": 1.5675419999997757,
+            "p99": 1.5675419999997757,
+            "max": 1.5675419999997757,
+            "mean": 1.0704916000000595
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "requestBytes": 2500,
+          "responseBytes": 10671
+        }
+      },
+      "checks": [
+        {
+          "name": "all-concurrent-writes-acknowledged",
+          "passed": true,
+          "detail": {
+            "statuses": [
+              200,
+              200,
+              200,
+              200,
+              200
+            ]
+          },
+          "scenario": "same-marker-5"
+        },
+        {
+          "name": "all-distinct-contents-persisted",
+          "passed": true,
+          "detail": {
+            "count": 5,
+            "revision": 6,
+            "expected": 5
+          },
+          "scenario": "same-marker-5"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      }
+    },
+    {
+      "name": "sse-fanout-2",
+      "description": "N条SSE长连接；收到通知后50ms合并、串行GET图片列表及review，模拟当前页面补查（无浏览器渲染）",
+      "concurrency": 2,
+      "elapsedMs": 511.2317089999997,
+      "http": {
+        "requests": 10,
+        "successful": 10,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 19.560602020482275,
+        "latencyMs": {
+          "samples": 10,
+          "p50": 0.6926659999999174,
+          "p95": 5.330124999999498,
+          "p99": 5.330124999999498,
+          "max": 5.330124999999498,
+          "mean": 1.595512399999825
+        },
+        "statusCounts": {
+          "200": 10
+        },
+        "requestBytes": 1000,
+        "responseBytes": 45510
+      },
+      "byKind": {
+        "sse-connect": {
+          "requests": 2,
+          "successful": 2,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 3.912120404096455,
+          "latencyMs": {
+            "samples": 2,
+            "p50": 1.213292000000365,
+            "p95": 1.9127920000000813,
+            "p99": 1.9127920000000813,
+            "max": 1.9127920000000813,
+            "mean": 1.5630420000002232
+          },
+          "statusCounts": {
+            "200": 2
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        },
+        "sse-origin-write": {
+          "requests": 2,
+          "successful": 2,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 3.912120404096455,
+          "latencyMs": {
+            "samples": 2,
+            "p50": 0.6926659999999174,
+            "p95": 5.330124999999498,
+            "p99": 5.330124999999498,
+            "max": 5.330124999999498,
+            "mean": 3.0113954999997077
+          },
+          "statusCounts": {
+            "200": 2
+          },
+          "requestBytes": 1000,
+          "responseBytes": 12202
+        },
+        "sse-notification": {
+          "requests": 4,
+          "successful": 4,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 7.82424080819291,
+          "latencyMs": {
+            "samples": 4,
+            "p50": 0.8545420000000377,
+            "p95": 5.94366699999955,
+            "p99": 5.94366699999955,
+            "max": 5.94366699999955,
+            "mean": 3.341895999999906
+          },
+          "statusCounts": {
+            "200": 4
+          },
+          "requestBytes": 0,
+          "responseBytes": 192
+        },
+        "sse-refresh-list": {
+          "requests": 4,
+          "successful": 4,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 7.82424080819291,
+          "latencyMs": {
+            "samples": 4,
+            "p50": 0.508082999999715,
+            "p95": 2.662666999999601,
+            "p99": 2.662666999999601,
+            "max": 2.662666999999601,
+            "mean": 1.497229249999691
+          },
+          "statusCounts": {
+            "200": 4
+          },
+          "requestBytes": 0,
+          "responseBytes": 9160
+        },
+        "sse-refresh-review": {
+          "requests": 4,
+          "successful": 4,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 7.82424080819291,
+          "latencyMs": {
+            "samples": 4,
+            "p50": 0.41662499999983993,
+            "p95": 1.7574169999998048,
+            "p99": 1.7574169999998048,
+            "max": 1.7574169999998048,
+            "mean": 0.9858540000000175
+          },
+          "statusCounts": {
+            "200": 4
+          },
+          "requestBytes": 0,
+          "responseBytes": 24148
+        },
+        "sse-visible": {
+          "requests": 4,
+          "successful": 4,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 7.82424080819291,
+          "latencyMs": {
+            "samples": 4,
+            "p50": 53.247833999999784,
+            "p95": 62.07099999999991,
+            "p99": 62.07099999999991,
+            "max": 62.07099999999991,
+            "mean": 57.52388574999986
+          },
+          "statusCounts": {
+            "200": 4
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        }
+      },
+      "checks": [
+        {
+          "name": "all-notifications-received",
+          "passed": true,
+          "detail": {
+            "expected": 4,
+            "received": 4
+          },
+          "scenario": "sse-fanout-2"
+        },
+        {
+          "name": "all-subscribers-caught-up",
+          "passed": true,
+          "detail": {
+            "expected": 2,
+            "finalCaughtUp": 2,
+            "targetRevision": 3
+          },
+          "scenario": "sse-fanout-2"
+        },
+        {
+          "name": "no-unexpected-sse-disconnects",
+          "passed": true,
+          "detail": {
+            "disconnects": 0
+          },
+          "scenario": "sse-fanout-2"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      },
+      "sse": {
+        "connections": 2,
+        "updates": 2,
+        "expectedNotifications": 4,
+        "receivedNotifications": 4,
+        "finalCaughtUp": 2,
+        "disconnects": 0,
+        "connectElapsedMs": 2.1629579999998896,
+        "notificationLatencyMs": {
+          "samples": 4,
+          "p50": 0.8545420000000377,
+          "p95": 5.94366699999955,
+          "p99": 5.94366699999955,
+          "max": 5.94366699999955,
+          "mean": 3.341895999999906
+        },
+        "visibleLatencyMs": {
+          "samples": 4,
+          "p50": 53.247833999999784,
+          "p95": 62.07099999999991,
+          "p99": 62.07099999999991,
+          "max": 62.07099999999991,
+          "mean": 57.52388574999986
+        },
+        "coalescedUpdates": 0
+      }
+    },
+    {
+      "name": "sse-fanout-5",
+      "description": "N条SSE长连接；收到通知后50ms合并、串行GET图片列表及review，模拟当前页面补查（无浏览器渲染）",
+      "concurrency": 5,
+      "elapsedMs": 507.4110419999997,
+      "http": {
+        "requests": 22,
+        "successful": 22,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 43.35735366200409,
+        "latencyMs": {
+          "samples": 22,
+          "p50": 2.3882080000003043,
+          "p95": 4.263208000000304,
+          "p99": 5.274000000000342,
+          "max": 5.274000000000342,
+          "mean": 2.6657595454545446
+        },
+        "statusCounts": {
+          "200": 22
+        },
+        "requestBytes": 1000,
+        "responseBytes": 95472
+      },
+      "byKind": {
+        "sse-connect": {
+          "requests": 5,
+          "successful": 5,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 9.853944014091839,
+          "latencyMs": {
+            "samples": 5,
+            "p50": 1.7271670000000086,
+            "p95": 2.2574170000007143,
+            "p99": 2.2574170000007143,
+            "max": 2.2574170000007143,
+            "mean": 1.8406168000001344
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        },
+        "sse-origin-write": {
+          "requests": 2,
+          "successful": 2,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 3.9415776056367355,
+          "latencyMs": {
+            "samples": 2,
+            "p50": 1.3989579999997659,
+            "p95": 5.274000000000342,
+            "p99": 5.274000000000342,
+            "max": 5.274000000000342,
+            "mean": 3.336479000000054
+          },
+          "statusCounts": {
+            "200": 2
+          },
+          "requestBytes": 1000,
+          "responseBytes": 12202
+        },
+        "sse-notification": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 19.707888028183678,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 1.6569159999999101,
+            "p95": 5.844999999999345,
+            "p99": 5.844999999999345,
+            "max": 5.844999999999345,
+            "mean": 3.7004039999999803
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 0,
+          "responseBytes": 480
+        },
+        "sse-refresh-list": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 19.707888028183678,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 2.48120900000049,
+            "p95": 3.883332999999766,
+            "p99": 3.883332999999766,
+            "max": 3.883332999999766,
+            "mean": 2.7038002000000234
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 0,
+          "responseBytes": 22900
+        },
+        "sse-refresh-review": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 19.707888028183678,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 2.206790999999612,
+            "p95": 4.263208000000304,
+            "p99": 4.263208000000304,
+            "max": 4.263208000000304,
+            "mean": 2.4935749999999643
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 0,
+          "responseBytes": 60370
+        },
+        "sse-visible": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 19.707888028183678,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 59.490625000000364,
+            "p95": 63.159708999999566,
+            "p99": 63.159708999999566,
+            "max": 63.159708999999566,
+            "mean": 60.42046670000009
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        }
+      },
+      "checks": [
+        {
+          "name": "all-notifications-received",
+          "passed": true,
+          "detail": {
+            "expected": 10,
+            "received": 10
+          },
+          "scenario": "sse-fanout-5"
+        },
+        {
+          "name": "all-subscribers-caught-up",
+          "passed": true,
+          "detail": {
+            "expected": 5,
+            "finalCaughtUp": 5,
+            "targetRevision": 3
+          },
+          "scenario": "sse-fanout-5"
+        },
+        {
+          "name": "no-unexpected-sse-disconnects",
+          "passed": true,
+          "detail": {
+            "disconnects": 0
+          },
+          "scenario": "sse-fanout-5"
+        }
+      ],
+      "resources": {
+        "samples": 1,
+        "peakRssBytes": 157745152,
+        "cpuPercentMax": 25.230989704750368,
+        "eventLoopDelayP95MsMax": 12.484607,
+        "eventLoopDelayMaxMs": 15.581183
+      },
+      "sse": {
+        "connections": 5,
+        "updates": 2,
+        "expectedNotifications": 10,
+        "receivedNotifications": 10,
+        "finalCaughtUp": 5,
+        "disconnects": 0,
+        "connectElapsedMs": 2.680916999999681,
+        "notificationLatencyMs": {
+          "samples": 10,
+          "p50": 1.6569159999999101,
+          "p95": 5.844999999999345,
+          "p99": 5.844999999999345,
+          "max": 5.844999999999345,
+          "mean": 3.7004039999999803
+        },
+        "visibleLatencyMs": {
+          "samples": 10,
+          "p50": 59.490625000000364,
+          "p95": 63.159708999999566,
+          "p99": 63.159708999999566,
+          "max": 63.159708999999566,
+          "mean": 60.42046670000009
+        },
+        "coalescedUpdates": 0
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "worker-0-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 2,
+        "revision": 3,
+        "count": 10
+      },
+      "scenario": "write-independent-2"
+    },
+    {
+      "name": "worker-1-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 2,
+        "revision": 3,
+        "count": 10
+      },
+      "scenario": "write-independent-2"
+    },
+    {
+      "name": "worker-0-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 2,
+        "revision": 3,
+        "count": 10
+      },
+      "scenario": "write-independent-5"
+    },
+    {
+      "name": "worker-1-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 2,
+        "revision": 3,
+        "count": 10
+      },
+      "scenario": "write-independent-5"
+    },
+    {
+      "name": "worker-2-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 2,
+        "revision": 3,
+        "count": 10
+      },
+      "scenario": "write-independent-5"
+    },
+    {
+      "name": "worker-3-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 2,
+        "revision": 3,
+        "count": 10
+      },
+      "scenario": "write-independent-5"
+    },
+    {
+      "name": "worker-4-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 2,
+        "revision": 3,
+        "count": 10
+      },
+      "scenario": "write-independent-5"
+    },
+    {
+      "name": "all-concurrent-writes-acknowledged",
+      "passed": true,
+      "detail": {
+        "statuses": [
+          200,
+          200
+        ]
+      },
+      "scenario": "same-marker-2"
+    },
+    {
+      "name": "all-distinct-contents-persisted",
+      "passed": true,
+      "detail": {
+        "count": 2,
+        "revision": 3,
+        "expected": 2
+      },
+      "scenario": "same-marker-2"
+    },
+    {
+      "name": "all-concurrent-writes-acknowledged",
+      "passed": true,
+      "detail": {
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      },
+      "scenario": "same-marker-5"
+    },
+    {
+      "name": "all-distinct-contents-persisted",
+      "passed": true,
+      "detail": {
+        "count": 5,
+        "revision": 6,
+        "expected": 5
+      },
+      "scenario": "same-marker-5"
+    },
+    {
+      "name": "all-notifications-received",
+      "passed": true,
+      "detail": {
+        "expected": 4,
+        "received": 4
+      },
+      "scenario": "sse-fanout-2"
+    },
+    {
+      "name": "all-subscribers-caught-up",
+      "passed": true,
+      "detail": {
+        "expected": 2,
+        "finalCaughtUp": 2,
+        "targetRevision": 3
+      },
+      "scenario": "sse-fanout-2"
+    },
+    {
+      "name": "no-unexpected-sse-disconnects",
+      "passed": true,
+      "detail": {
+        "disconnects": 0
+      },
+      "scenario": "sse-fanout-2"
+    },
+    {
+      "name": "all-notifications-received",
+      "passed": true,
+      "detail": {
+        "expected": 10,
+        "received": 10
+      },
+      "scenario": "sse-fanout-5"
+    },
+    {
+      "name": "all-subscribers-caught-up",
+      "passed": true,
+      "detail": {
+        "expected": 5,
+        "finalCaughtUp": 5,
+        "targetRevision": 3
+      },
+      "scenario": "sse-fanout-5"
+    },
+    {
+      "name": "no-unexpected-sse-disconnects",
+      "passed": true,
+      "detail": {
+        "disconnects": 0
+      },
+      "scenario": "sse-fanout-5"
+    },
+    {
+      "name": "sqlite-integrity-check",
+      "passed": true,
+      "detail": "ok",
+      "scenario": "shutdown"
+    }
+  ],
+  "fatal": null,
+  "artifacts": {
+    "requests": "requests.jsonl",
+    "csv": "requests.csv",
+    "resources": "resources.jsonl",
+    "serverLog": "server-output.txt",
+    "database": "fixture.sqlite.gz",
+    "databaseInfo": "database-info.json"
+  },
+  "limitations": [
+    "并发数为闭环HTTP worker或SSE连接，不代表真实浏览器用户数。",
+    "客户端与服务端同机竞争CPU，loopback不含公网延迟；这些结果不是最大用户容量或生产SLA。",
+    "HTTP延迟包括客户端队列、传输、响应读取与JSON解析；不包括浏览器绘制。百分位按全部已完成请求计算，错误另列。",
+    "SSE可见延迟从保存请求开始计时，包含50ms合并及list+review补查；较新版本覆盖较旧通知时记为已追赶，而非每个中间版本都曾显示。",
+    "读取阶段限时且最多20000请求，耗时包括停止发起后的在途请求收尾；写入阶段为固定操作次数突发测试，未模拟用户思考时间。",
+    "HTTP RPS只包含测量请求；初始化、预热、验证查询不计入。业务上限101保护阶段预期409应单列，不是性能错误。",
+    "未覆盖上传解码、大图片下载、真实浏览器内存/渲染、长时间耐久测试、多服务器部署。",
+    "资源指标每秒采样，极短阶段可能没有样本；event-loop histogram分辨率10ms，不是完整CPU剖析。"
+  ]
+}

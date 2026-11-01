@@ -19,6 +19,7 @@ const env = {
 };
 const base = `http://127.0.0.1:${port}`;
 let server;
+let cookie = "";
 async function setup() {
   const child = spawn(
     process.execPath,
@@ -50,15 +51,25 @@ async function stop() {
   }
   server = null;
 }
+async function crash() {
+  if (server && server.exitCode === null) {
+    const exited = new Promise((resolve) => server.once("exit", resolve));
+    server.kill("SIGKILL");
+    await exited;
+  }
+  server = null;
+}
 async function get() {
-  const response = await fetch(base + "/api/images/demo-detail/review");
+  const response = await fetch(base + "/api/images/demo-detail/review", {
+    headers: { Cookie: cookie },
+  });
   assert.equal(response.status, 200);
   return response.json();
 }
 async function save(annotations, baseRevision) {
   const response = await fetch(base + "/api/images/demo-detail/annotations", {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", Cookie: cookie },
     body: JSON.stringify({ actorId: "operator-1", baseRevision, annotations }),
   });
   assert.equal(response.status, 200);
@@ -68,6 +79,13 @@ try {
   await setup();
   await start();
   assert.equal((await fetch(base + "/")).status, 200);
+  const auth = await fetch(base + "/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: "小林" }),
+  });
+  assert.equal(auth.status, 200);
+  cookie = auth.headers.get("set-cookie").split(";")[0];
   const a = {
     id: randomUUID(),
     x: 0.34,
@@ -76,17 +94,68 @@ try {
     sortOrder: 0,
   };
   await save([a], 0);
+  const backupId = randomUUID();
+  const backup = await fetch(
+    base + `/api/images/demo-detail/drafts/${backupId}`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json", Cookie: cookie },
+      body: JSON.stringify({
+        expectedVersion: 0,
+        baseRevision: 1,
+        baseAnnotations: [a],
+        annotations: [{ ...a, content: "重启恢复的私人草稿" }],
+        selectedId: a.id,
+      }),
+    },
+  );
+  assert.equal(backup.status, 200);
+
   await stop();
   await setup();
   await start();
   assert.equal((await get()).annotations[0].content, a.content);
   assert.equal((await get()).image.revision, 1);
+  const restored = await fetch(base + "/api/images/demo-detail/drafts", {
+    headers: { Cookie: cookie },
+  }).then((r) => r.json());
+  assert.equal(restored[0].annotations[0].content, "重启恢复的私人草稿");
+
   await save([], 1);
   await stop();
   await start();
   assert.deepEqual((await get()).annotations, []);
+  for (const [id, baseRevision] of [
+    ["demo-detail", 2],
+    ["demo-poster", 0],
+  ]) {
+    const response = await fetch(base + `/api/images/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json", Cookie: cookie },
+      body: JSON.stringify({ baseRevision }),
+    });
+    assert.equal(response.status, 200);
+  }
+  await stop();
+  await setup();
+  await start();
+  const images = await fetch(base + "/api/images?groupId=default-group", {
+    headers: { Cookie: cookie },
+  });
+  assert.equal(images.status, 200);
+  assert.deepEqual(await images.json(), []);
+  assert.equal((await fetch(base + "/")).status, 200);
+  assert.equal(
+    (
+      await fetch(base + `/api/images/demo-detail/drafts/${backupId}`, {
+        headers: { Cookie: cookie },
+      })
+    ).status,
+    404,
+  );
+
   console.log(
-    "PASS: 独立文件库、跨工作目录生产启动、重复初始化保留数据、保存后重启恢复、清空后重启无残留",
+    "PASS: 独立文件库、跨工作目录生产启动、重复初始化保留数据、保存后重启恢复、清空后重启无残留、删除全部照片后初始化不复活且空库正常启动、私人草稿强制终止后恢复及图片删除级联清理",
   );
 } finally {
   await stop();

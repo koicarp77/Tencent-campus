@@ -1,0 +1,11 @@
+{
+  "fileBytes": 1204224,
+  "compressedBytes": 51211,
+  "counts": {
+    "images": 14,
+    "annotations": 217,
+    "review_versions": 73,
+    "review_submissions": 45
+  },
+  "integrity": "ok"
+}

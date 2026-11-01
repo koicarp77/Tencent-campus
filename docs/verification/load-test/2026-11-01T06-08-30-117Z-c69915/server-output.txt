@@ -1,0 +1,14 @@
+
+> review-desk@1.0.0 build
+> vite build --config apps/web/vite.config.ts && tsc -p apps/api/tsconfig.json
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 20 modules transformed.
+rendering chunks...
+computing gzip size...
+../../dist/web/index.html                   0.43 kB │ gzip:  0.33 kB
+../../dist/web/assets/index-vCcQcABq.css   17.23 kB │ gzip:  4.72 kB
+../../dist/web/assets/index-DIkokOqg.js   115.68 kB │ gzip: 43.80 kB
+✓ built in 312ms
+审图台 http://127.0.0.1:50322

@@ -1,0 +1,52 @@
+{
+  "executedAt": "2026/11/1 13:16:29",
+  "scenario": "同一群组、同一图片、同一标记、两个独立账号及浏览器上下文；两个PATCH都到达拦截点后同时放行；所有请求和响应均来自真实后端",
+  "initialRevision": 1,
+  "requests": [
+    {
+      "account": "小林",
+      "actorId": "operator-1",
+      "baseRevision": 1,
+      "content": "小林：活动价应改为259元",
+      "httpStatus": 200,
+      "uiStatus": "已保存"
+    },
+    {
+      "account": "小周",
+      "actorId": "operator-2",
+      "baseRevision": 1,
+      "content": "小周：活动日期需要补充",
+      "httpStatus": 200,
+      "uiStatus": "已保存"
+    }
+  ],
+  "finalRevision": 3,
+  "annotations": [
+    {
+      "id": "8cb0156c-9246-4ab4-9628-b4bc6b66cb35",
+      "x": 0.25,
+      "y": 0.3,
+      "content": "小林：活动价应改为259元",
+      "sortOrder": 0,
+      "createdBy": "operator-1",
+      "updatedBy": "operator-1",
+      "createdAt": "2026-11-01T05:16:28.923Z",
+      "updatedAt": "2026-11-01T05:16:29.280Z",
+      "createdByName": "小林",
+      "updatedByName": "小林"
+    },
+    {
+      "id": "f8b95105-7876-450b-a943-5756f133c7eb",
+      "x": 0.25,
+      "y": 0.3,
+      "content": "小周：活动日期需要补充",
+      "sortOrder": 1,
+      "createdBy": "operator-2",
+      "updatedBy": "operator-2",
+      "createdAt": "2026-11-01T05:16:29.281Z",
+      "updatedAt": "2026-11-01T05:16:29.281Z",
+      "createdByName": "小周",
+      "updatedByName": "小周"
+    }
+  ]
+}

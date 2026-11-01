@@ -1,0 +1,5130 @@
+{
+  "runId": "2026-11-01T06-08-30-117Z-c69915",
+  "startedAt": "2026-11-01T06:08:30.119Z",
+  "finishedAt": "2026-11-01T06:08:52.259Z",
+  "environment": {
+    "platform": "darwin 24.6.0",
+    "arch": "arm64",
+    "node": "v26.5.1",
+    "sqlite": "3.53.2",
+    "cpus": 10,
+    "cpuModel": "Apple M4",
+    "totalMemoryBytes": 17179869184,
+    "serverPid": 81316,
+    "scope": "同机loopback；独立生产构建子进程与临时磁盘SQLite；纯HTTP/SSE模拟账号，无浏览器渲染"
+  },
+  "configuration": {
+    "levels": [
+      10,
+      50,
+      100
+    ],
+    "readSeconds": 10,
+    "writeIterations": 20,
+    "sseUpdates": 10,
+    "sseIntervalMs": 250,
+    "maxReadRequestsPerStage": 20000,
+    "requestTimeoutMs": 12000,
+    "accountCount": 100,
+    "realBrowserUsers": 0
+  },
+  "scenarios": [
+    {
+      "name": "read-read-normal-10",
+      "description": "闭环GET review；10条标记，每条100字；无思考时间",
+      "concurrency": 10,
+      "elapsedMs": 1991.1342909999998,
+      "http": {
+        "requests": 20000,
+        "successful": 20000,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 10044.52592193341,
+        "latencyMs": {
+          "samples": 20000,
+          "p50": 0.8270829999996749,
+          "p95": 1.6749589999999444,
+          "p99": 2.4078340000000935,
+          "max": 11.38650000000007,
+          "mean": 0.9865660424999978
+        },
+        "statusCounts": {
+          "200": 20000
+        },
+        "requestBytes": 0,
+        "responseBytes": 120660000
+      },
+      "byKind": {
+        "review-read": {
+          "requests": 20000,
+          "successful": 20000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 10044.52592193341,
+          "latencyMs": {
+            "samples": 20000,
+            "p50": 0.8270829999996749,
+            "p95": 1.6749589999999444,
+            "p99": 2.4078340000000935,
+            "max": 11.38650000000007,
+            "mean": 0.9865660424999978
+          },
+          "statusCounts": {
+            "200": 20000
+          },
+          "requestBytes": 0,
+          "responseBytes": 120660000
+        }
+      },
+      "checks": [
+        {
+          "name": "read-response-shape",
+          "passed": true,
+          "detail": {
+            "invalidResponses": 0
+          },
+          "scenario": "read-read-normal-10"
+        }
+      ],
+      "resources": {
+        "samples": 2,
+        "peakRssBytes": 123731968,
+        "cpuPercentMax": 108.20490630819906,
+        "eventLoopDelayP95MsMax": 11.042815,
+        "eventLoopDelayMaxMs": 15.245311
+      },
+      "stopReason": "request-cap",
+      "configuredSeconds": 10
+    },
+    {
+      "name": "read-read-normal-50",
+      "description": "闭环GET review；10条标记，每条100字；无思考时间",
+      "concurrency": 50,
+      "elapsedMs": 1963.524625,
+      "http": {
+        "requests": 20000,
+        "successful": 20000,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 10185.764795284907,
+        "latencyMs": {
+          "samples": 20000,
+          "p50": 4.4484590000001845,
+          "p95": 7.249542000000474,
+          "p99": 10.701750000000175,
+          "max": 113.0456250000002,
+          "mean": 4.894509046500021
+        },
+        "statusCounts": {
+          "200": 20000
+        },
+        "requestBytes": 0,
+        "responseBytes": 120660000
+      },
+      "byKind": {
+        "review-read": {
+          "requests": 20000,
+          "successful": 20000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 10185.764795284907,
+          "latencyMs": {
+            "samples": 20000,
+            "p50": 4.4484590000001845,
+            "p95": 7.249542000000474,
+            "p99": 10.701750000000175,
+            "max": 113.0456250000002,
+            "mean": 4.894509046500021
+          },
+          "statusCounts": {
+            "200": 20000
+          },
+          "requestBytes": 0,
+          "responseBytes": 120660000
+        }
+      },
+      "checks": [
+        {
+          "name": "read-response-shape",
+          "passed": true,
+          "detail": {
+            "invalidResponses": 0
+          },
+          "scenario": "read-read-normal-50"
+        }
+      ],
+      "resources": {
+        "samples": 2,
+        "peakRssBytes": 129351680,
+        "cpuPercentMax": 98.31592146827374,
+        "eventLoopDelayP95MsMax": 15.097855,
+        "eventLoopDelayMaxMs": 20.021247
+      },
+      "stopReason": "request-cap",
+      "configuredSeconds": 10
+    },
+    {
+      "name": "read-read-normal-100",
+      "description": "闭环GET review；10条标记，每条100字；无思考时间",
+      "concurrency": 100,
+      "elapsedMs": 1879.2717919999996,
+      "http": {
+        "requests": 20000,
+        "successful": 20000,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 10642.420157179695,
+        "latencyMs": {
+          "samples": 20000,
+          "p50": 9.011666000000332,
+          "p95": 9.952000000000226,
+          "p99": 18.00550000000021,
+          "max": 353.0829169999997,
+          "mean": 9.363846925000013
+        },
+        "statusCounts": {
+          "200": 20000
+        },
+        "requestBytes": 0,
+        "responseBytes": 120660000
+      },
+      "byKind": {
+        "review-read": {
+          "requests": 20000,
+          "successful": 20000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 10642.420157179695,
+          "latencyMs": {
+            "samples": 20000,
+            "p50": 9.011666000000332,
+            "p95": 9.952000000000226,
+            "p99": 18.00550000000021,
+            "max": 353.0829169999997,
+            "mean": 9.363846925000013
+          },
+          "statusCounts": {
+            "200": 20000
+          },
+          "requestBytes": 0,
+          "responseBytes": 120660000
+        }
+      },
+      "checks": [
+        {
+          "name": "read-response-shape",
+          "passed": true,
+          "detail": {
+            "invalidResponses": 0
+          },
+          "scenario": "read-read-normal-100"
+        }
+      ],
+      "resources": {
+        "samples": 2,
+        "peakRssBytes": 130596864,
+        "cpuPercentMax": 100.16591935903136,
+        "eventLoopDelayP95MsMax": 18.874367,
+        "eventLoopDelayMaxMs": 19.677183
+      },
+      "stopReason": "request-cap",
+      "configuredSeconds": 10
+    },
+    {
+      "name": "read-read-maximum-100",
+      "description": "闭环GET review；100条标记，每条500字；无思考时间",
+      "concurrency": 100,
+      "elapsedMs": 5081.225833,
+      "http": {
+        "requests": 6280,
+        "successful": 6280,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 1235.9222373496107,
+        "latencyMs": {
+          "samples": 6280,
+          "p50": 78.7751670000016,
+          "p95": 88.42895800000042,
+          "p99": 134.49237500000072,
+          "max": 212.29624999999942,
+          "mean": 80.24350284299354
+        },
+        "statusCounts": {
+          "200": 6280
+        },
+        "requestBytes": 0,
+        "responseBytes": 1122141800
+      },
+      "byKind": {
+        "review-read": {
+          "requests": 6280,
+          "successful": 6280,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 1235.9222373496107,
+          "latencyMs": {
+            "samples": 6280,
+            "p50": 78.7751670000016,
+            "p95": 88.42895800000042,
+            "p99": 134.49237500000072,
+            "max": 212.29624999999942,
+            "mean": 80.24350284299354
+          },
+          "statusCounts": {
+            "200": 6280
+          },
+          "requestBytes": 0,
+          "responseBytes": 1122141800
+        }
+      },
+      "checks": [
+        {
+          "name": "read-response-shape",
+          "passed": true,
+          "detail": {
+            "invalidResponses": 0
+          },
+          "scenario": "read-read-maximum-100"
+        }
+      ],
+      "resources": {
+        "samples": 5,
+        "peakRssBytes": 241647616,
+        "cpuPercentMax": 107.325068606855,
+        "eventLoopDelayP95MsMax": 89.522175,
+        "eventLoopDelayMaxMs": 123.469823
+      },
+      "stopReason": "duration",
+      "configuredSeconds": 5
+    },
+    {
+      "name": "write-independent-10",
+      "description": "每个worker编辑自己的图片，20次沿成功响应版本增量保存；每图10条标记",
+      "concurrency": 10,
+      "elapsedMs": 103.79654200000004,
+      "http": {
+        "requests": 200,
+        "successful": 200,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 1926.8464646924356,
+        "latencyMs": {
+          "samples": 200,
+          "p50": 3.9728329999998095,
+          "p95": 10.164666999999099,
+          "p99": 11.551875000001019,
+          "max": 15.606458000000202,
+          "mean": 4.688022310000033
+        },
+        "statusCounts": {
+          "200": 200
+        },
+        "requestBytes": 100410,
+        "responseBytes": 1222620
+      },
+      "byKind": {
+        "annotation-write": {
+          "requests": 200,
+          "successful": 200,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 1926.8464646924356,
+          "latencyMs": {
+            "samples": 200,
+            "p50": 3.9728329999998095,
+            "p95": 10.164666999999099,
+            "p99": 11.551875000001019,
+            "max": 15.606458000000202,
+            "mean": 4.688022310000033
+          },
+          "statusCounts": {
+            "200": 200
+          },
+          "requestBytes": 100410,
+          "responseBytes": 1222620
+        }
+      },
+      "checks": [
+        {
+          "name": "worker-0-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-1-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-2-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-3-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-4-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-5-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-6-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-7-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-8-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        },
+        {
+          "name": "worker-9-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-10"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      },
+      "acknowledgedWrites": 200
+    },
+    {
+      "name": "write-independent-50",
+      "description": "每个worker编辑自己的图片，20次沿成功响应版本增量保存；每图10条标记",
+      "concurrency": 50,
+      "elapsedMs": 496.23391699999956,
+      "http": {
+        "requests": 1000,
+        "successful": 1000,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 2015.1786601881968,
+        "latencyMs": {
+          "samples": 1000,
+          "p50": 22.52716699999837,
+          "p95": 36.02454100000068,
+          "p99": 45.76158299999952,
+          "max": 74.69304200000079,
+          "mean": 23.747270874000037
+        },
+        "statusCounts": {
+          "200": 1000
+        },
+        "requestBytes": 502850,
+        "responseBytes": 6148300
+      },
+      "byKind": {
+        "annotation-write": {
+          "requests": 1000,
+          "successful": 1000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 2015.1786601881968,
+          "latencyMs": {
+            "samples": 1000,
+            "p50": 22.52716699999837,
+            "p95": 36.02454100000068,
+            "p99": 45.76158299999952,
+            "max": 74.69304200000079,
+            "mean": 23.747270874000037
+          },
+          "statusCounts": {
+            "200": 1000
+          },
+          "requestBytes": 502850,
+          "responseBytes": 6148300
+        }
+      },
+      "checks": [
+        {
+          "name": "worker-0-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-1-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-2-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-3-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-4-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-5-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-6-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-7-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-8-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-9-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-10-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-11-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-12-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-13-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-14-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-15-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-16-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-17-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-18-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-19-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-20-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-21-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-22-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-23-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-24-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-25-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-26-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-27-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-28-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-29-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-30-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-31-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-32-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-33-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-34-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-35-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-36-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-37-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-38-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-39-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-40-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-41-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-42-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-43-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-44-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-45-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-46-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-47-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-48-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        },
+        {
+          "name": "worker-49-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-50"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      },
+      "acknowledgedWrites": 1000
+    },
+    {
+      "name": "write-independent-100",
+      "description": "每个worker编辑自己的图片，20次沿成功响应版本增量保存；每图10条标记",
+      "concurrency": 100,
+      "elapsedMs": 1028.7334579999988,
+      "http": {
+        "requests": 2000,
+        "successful": 2000,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 1944.138187056032,
+        "latencyMs": {
+          "samples": 2000,
+          "p50": 47.92108400000143,
+          "p95": 71.33137499999975,
+          "p99": 80.92366699999911,
+          "max": 144.11779099999876,
+          "mean": 49.198614849000045
+        },
+        "statusCounts": {
+          "200": 2000
+        },
+        "requestBytes": 1005900,
+        "responseBytes": 12309400
+      },
+      "byKind": {
+        "annotation-write": {
+          "requests": 2000,
+          "successful": 2000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 1944.138187056032,
+          "latencyMs": {
+            "samples": 2000,
+            "p50": 47.92108400000143,
+            "p95": 71.33137499999975,
+            "p99": 80.92366699999911,
+            "max": 144.11779099999876,
+            "mean": 49.198614849000045
+          },
+          "statusCounts": {
+            "200": 2000
+          },
+          "requestBytes": 1005900,
+          "responseBytes": 12309400
+        }
+      },
+      "checks": [
+        {
+          "name": "worker-0-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-1-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-2-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-3-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-4-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-5-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-6-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-7-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-8-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-9-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-10-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-11-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-12-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-13-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-14-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-15-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-16-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-17-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-18-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-19-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-20-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-21-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-22-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-23-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-24-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-25-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-26-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-27-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-28-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-29-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-30-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-31-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-32-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-33-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-34-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-35-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-36-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-37-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-38-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-39-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-40-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-41-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-42-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-43-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-44-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-45-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-46-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-47-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-48-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-49-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-50-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-51-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-52-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-53-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-54-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-55-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-56-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-57-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-58-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-59-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-60-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-61-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-62-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-63-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-64-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-65-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-66-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-67-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-68-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-69-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-70-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-71-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-72-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-73-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-74-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-75-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-76-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-77-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-78-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-79-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-80-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-81-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-82-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-83-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-84-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-85-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-86-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-87-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-88-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-89-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-90-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-91-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-92-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-93-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-94-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-95-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-96-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-97-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-98-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        },
+        {
+          "name": "worker-99-persisted",
+          "passed": true,
+          "detail": {
+            "acknowledged": 20,
+            "revision": 21,
+            "count": 10
+          },
+          "scenario": "write-independent-100"
+        }
+      ],
+      "resources": {
+        "samples": 1,
+        "peakRssBytes": 222625792,
+        "cpuPercentMax": 93.57190429375115,
+        "eventLoopDelayP95MsMax": 53.411839,
+        "eventLoopDelayMaxMs": 53.936127
+      },
+      "acknowledgedWrites": 2000
+    },
+    {
+      "name": "same-marker-10",
+      "description": "所有账号从同一基准版本同时修改同一个标记，每人不同内容；检查分叉及版本",
+      "concurrency": 10,
+      "elapsedMs": 5.391417000000729,
+      "http": {
+        "requests": 10,
+        "successful": 10,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 1854.7999533329826,
+        "latencyMs": {
+          "samples": 10,
+          "p50": 3.3295840000009775,
+          "p95": 5.114042000001064,
+          "p99": 5.114042000001064,
+          "max": 5.114042000001064,
+          "mean": 3.3739456999999673
+        },
+        "statusCounts": {
+          "200": 10
+        },
+        "requestBytes": 5000,
+        "responseBytes": 36463
+      },
+      "byKind": {
+        "concurrent-same-marker": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 1854.7999533329826,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 3.3295840000009775,
+            "p95": 5.114042000001064,
+            "p99": 5.114042000001064,
+            "max": 5.114042000001064,
+            "mean": 3.3739456999999673
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 5000,
+          "responseBytes": 36463
+        }
+      },
+      "checks": [
+        {
+          "name": "all-concurrent-writes-acknowledged",
+          "passed": true,
+          "detail": {
+            "statuses": [
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200
+            ]
+          },
+          "scenario": "same-marker-10"
+        },
+        {
+          "name": "all-distinct-contents-persisted",
+          "passed": true,
+          "detail": {
+            "count": 10,
+            "revision": 11,
+            "expected": 10
+          },
+          "scenario": "same-marker-10"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      }
+    },
+    {
+      "name": "same-marker-50",
+      "description": "所有账号从同一基准版本同时修改同一个标记，每人不同内容；检查分叉及版本",
+      "concurrency": 50,
+      "elapsedMs": 44.19945800000096,
+      "http": {
+        "requests": 50,
+        "successful": 50,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 1131.2355911694417,
+        "latencyMs": {
+          "samples": 50,
+          "p50": 15.52416599999924,
+          "p95": 41.47862500000156,
+          "p99": 43.5200420000001,
+          "max": 43.5200420000001,
+          "mean": 18.165794120000065
+        },
+        "statusCounts": {
+          "200": 50
+        },
+        "requestBytes": 25040,
+        "responseBytes": 787663
+      },
+      "byKind": {
+        "concurrent-same-marker": {
+          "requests": 50,
+          "successful": 50,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 1131.2355911694417,
+          "latencyMs": {
+            "samples": 50,
+            "p50": 15.52416599999924,
+            "p95": 41.47862500000156,
+            "p99": 43.5200420000001,
+            "max": 43.5200420000001,
+            "mean": 18.165794120000065
+          },
+          "statusCounts": {
+            "200": 50
+          },
+          "requestBytes": 25040,
+          "responseBytes": 787663
+        }
+      },
+      "checks": [
+        {
+          "name": "all-concurrent-writes-acknowledged",
+          "passed": true,
+          "detail": {
+            "statuses": [
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200
+            ]
+          },
+          "scenario": "same-marker-50"
+        },
+        {
+          "name": "all-distinct-contents-persisted",
+          "passed": true,
+          "detail": {
+            "count": 50,
+            "revision": 51,
+            "expected": 50
+          },
+          "scenario": "same-marker-50"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      }
+    },
+    {
+      "name": "same-marker-100",
+      "description": "所有账号从同一基准版本同时修改同一个标记，每人不同内容；检查分叉及版本",
+      "concurrency": 100,
+      "elapsedMs": 141.20187500000065,
+      "http": {
+        "requests": 100,
+        "successful": 100,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 708.2058931582852,
+        "latencyMs": {
+          "samples": 100,
+          "p50": 43.7934580000001,
+          "p95": 131.74174999999923,
+          "p99": 138.07016699999986,
+          "max": 139.77320899999904,
+          "mean": 55.28058918000002
+        },
+        "statusCounts": {
+          "200": 100
+        },
+        "requestBytes": 50090,
+        "responseBytes": 3090365
+      },
+      "byKind": {
+        "concurrent-same-marker": {
+          "requests": 100,
+          "successful": 100,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 708.2058931582852,
+          "latencyMs": {
+            "samples": 100,
+            "p50": 43.7934580000001,
+            "p95": 131.74174999999923,
+            "p99": 138.07016699999986,
+            "max": 139.77320899999904,
+            "mean": 55.28058918000002
+          },
+          "statusCounts": {
+            "200": 100
+          },
+          "requestBytes": 50090,
+          "responseBytes": 3090365
+        }
+      },
+      "checks": [
+        {
+          "name": "all-concurrent-writes-acknowledged",
+          "passed": true,
+          "detail": {
+            "statuses": [
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200,
+              200
+            ]
+          },
+          "scenario": "same-marker-100"
+        },
+        {
+          "name": "all-distinct-contents-persisted",
+          "passed": true,
+          "detail": {
+            "count": 100,
+            "revision": 101,
+            "expected": 100
+          },
+          "scenario": "same-marker-100"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      }
+    },
+    {
+      "name": "business-limit-101",
+      "description": "业务保护对照：已有100份并发修改时再提交第101份，预期409 MERGE_LIMIT，不计为服务器容量故障",
+      "concurrency": 1,
+      "elapsedMs": 4.825249999999869,
+      "http": {
+        "requests": 1,
+        "successful": 0,
+        "failed": 1,
+        "errorRate": 1,
+        "rps": 207.2431480234241,
+        "latencyMs": {
+          "samples": 1,
+          "p50": 3.962915999998586,
+          "p95": 3.962915999998586,
+          "p99": 3.962915999998586,
+          "max": 3.962915999998586,
+          "mean": 3.962915999998586
+        },
+        "statusCounts": {
+          "409": 1
+        },
+        "requestBytes": 217,
+        "responseBytes": 137
+      },
+      "byKind": {
+        "expected-policy-rejection": {
+          "requests": 1,
+          "successful": 0,
+          "failed": 1,
+          "errorRate": 1,
+          "rps": 207.2431480234241,
+          "latencyMs": {
+            "samples": 1,
+            "p50": 3.962915999998586,
+            "p95": 3.962915999998586,
+            "p99": 3.962915999998586,
+            "max": 3.962915999998586,
+            "mean": 3.962915999998586
+          },
+          "statusCounts": {
+            "409": 1
+          },
+          "requestBytes": 217,
+          "responseBytes": 137
+        }
+      },
+      "checks": [
+        {
+          "name": "101st-change-rejected-atomically",
+          "passed": true,
+          "detail": {
+            "status": 409,
+            "code": "MERGE_LIMIT",
+            "count": 100,
+            "revision": 101
+          },
+          "scenario": "business-limit-101"
+        }
+      ],
+      "resources": {
+        "samples": 0,
+        "peakRssBytes": null,
+        "cpuPercentMax": null,
+        "eventLoopDelayP95MsMax": null,
+        "eventLoopDelayMaxMs": null
+      },
+      "expectedPolicyRejection": true
+    },
+    {
+      "name": "sse-fanout-10",
+      "description": "N条SSE长连接；收到通知后50ms合并、串行GET图片列表及review，模拟当前页面补查（无浏览器渲染）",
+      "concurrency": 10,
+      "elapsedMs": 2521.006625000002,
+      "http": {
+        "requests": 210,
+        "successful": 210,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 83.30005876124973,
+        "latencyMs": {
+          "samples": 210,
+          "p50": 5.867666000000099,
+          "p95": 13.160334000000148,
+          "p99": 14.970124999999825,
+          "max": 15.442332999999053,
+          "mean": 6.4160593047619665
+        },
+        "statusCounts": {
+          "200": 210
+        },
+        "requestBytes": 5001,
+        "responseBytes": 3544372
+      },
+      "byKind": {
+        "sse-connect": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 3.9666694648214156,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 2.3715419999989535,
+            "p95": 2.8394160000007105,
+            "p99": 2.8394160000007105,
+            "max": 2.8394160000007105,
+            "mean": 2.371233200000097
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        },
+        "sse-origin-write": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 3.9666694648214156,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 4.6738750000004075,
+            "p95": 14.970124999999825,
+            "p99": 14.970124999999825,
+            "max": 14.970124999999825,
+            "mean": 5.277020800000173
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 5001,
+          "responseBytes": 61032
+        },
+        "sse-notification": {
+          "requests": 100,
+          "successful": 100,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 39.666694648214154,
+          "latencyMs": {
+            "samples": 100,
+            "p50": 5.307415999999648,
+            "p95": 15.574625000001106,
+            "p99": 15.690334000000803,
+            "max": 15.722750000000815,
+            "mean": 5.763123070000056
+          },
+          "statusCounts": {
+            "200": 100
+          },
+          "requestBytes": 0,
+          "responseBytes": 4920
+        },
+        "sse-refresh-list": {
+          "requests": 100,
+          "successful": 100,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 39.666694648214154,
+          "latencyMs": {
+            "samples": 100,
+            "p50": 7.394333000000188,
+            "p95": 13.25591600000007,
+            "p99": 13.725791999999274,
+            "max": 13.770916999999827,
+            "mean": 7.276196250000121
+          },
+          "statusCounts": {
+            "200": 100
+          },
+          "requestBytes": 0,
+          "responseBytes": 2879420
+        },
+        "sse-refresh-review": {
+          "requests": 100,
+          "successful": 100,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 39.666694648214154,
+          "latencyMs": {
+            "samples": 100,
+            "p50": 5.294374999999491,
+            "p95": 12.470999999999549,
+            "p99": 15.336333999999624,
+            "max": 15.442332999999053,
+            "mean": 5.669826209999992
+          },
+          "statusCounts": {
+            "200": 100
+          },
+          "requestBytes": 0,
+          "responseBytes": 603920
+        },
+        "sse-visible": {
+          "requests": 100,
+          "successful": 100,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 39.666694648214154,
+          "latencyMs": {
+            "samples": 100,
+            "p50": 71.4567500000012,
+            "p95": 82.71562500000073,
+            "p99": 83.51495900000009,
+            "max": 83.80445900000086,
+            "mean": 70.61983184999997
+          },
+          "statusCounts": {
+            "200": 100
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        }
+      },
+      "checks": [
+        {
+          "name": "all-notifications-received",
+          "passed": true,
+          "detail": {
+            "expected": 100,
+            "received": 100
+          },
+          "scenario": "sse-fanout-10"
+        },
+        {
+          "name": "all-subscribers-caught-up",
+          "passed": true,
+          "detail": {
+            "expected": 10,
+            "finalCaughtUp": 10,
+            "targetRevision": 11
+          },
+          "scenario": "sse-fanout-10"
+        },
+        {
+          "name": "no-unexpected-sse-disconnects",
+          "passed": true,
+          "detail": {
+            "disconnects": 0
+          },
+          "scenario": "sse-fanout-10"
+        }
+      ],
+      "resources": {
+        "samples": 3,
+        "peakRssBytes": 202506240,
+        "cpuPercentMax": 74.76646166124499,
+        "eventLoopDelayP95MsMax": 74.252287,
+        "eventLoopDelayMaxMs": 145.620991
+      },
+      "sse": {
+        "connections": 10,
+        "updates": 10,
+        "expectedNotifications": 100,
+        "receivedNotifications": 100,
+        "finalCaughtUp": 10,
+        "disconnects": 0,
+        "connectElapsedMs": 3.703292000000147,
+        "notificationLatencyMs": {
+          "samples": 100,
+          "p50": 5.307415999999648,
+          "p95": 15.574625000001106,
+          "p99": 15.690334000000803,
+          "max": 15.722750000000815,
+          "mean": 5.763123070000056
+        },
+        "visibleLatencyMs": {
+          "samples": 100,
+          "p50": 71.4567500000012,
+          "p95": 82.71562500000073,
+          "p99": 83.51495900000009,
+          "max": 83.80445900000086,
+          "mean": 70.61983184999997
+        },
+        "coalescedUpdates": 0
+      }
+    },
+    {
+      "name": "sse-fanout-50",
+      "description": "N条SSE长连接；收到通知后50ms合并、串行GET图片列表及review，模拟当前页面补查（无浏览器渲染）",
+      "concurrency": 50,
+      "elapsedMs": 2527.967916999998,
+      "http": {
+        "requests": 1010,
+        "successful": 1010,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 399.5303869198593,
+        "latencyMs": {
+          "samples": 1010,
+          "p50": 12.121291999999812,
+          "p95": 33.49070799999754,
+          "p99": 39.778833000000304,
+          "max": 45.07658399999855,
+          "mean": 15.21467903564355
+        },
+        "statusCounts": {
+          "200": 1010
+        },
+        "requestBytes": 5001,
+        "responseBytes": 17478232
+      },
+      "byKind": {
+        "sse-connect": {
+          "requests": 50,
+          "successful": 50,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 19.77873202573561,
+          "latencyMs": {
+            "samples": 50,
+            "p50": 6.0740420000001905,
+            "p95": 6.800083000001905,
+            "p99": 7.165499999999156,
+            "max": 7.165499999999156,
+            "mean": 6.067537439999796
+          },
+          "statusCounts": {
+            "200": 50
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        },
+        "sse-origin-write": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 3.955746405147122,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 6.3290410000008706,
+            "p95": 8.008166999999958,
+            "p99": 8.008166999999958,
+            "max": 8.008166999999958,
+            "mean": 6.189016599999741
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 5001,
+          "responseBytes": 61032
+        },
+        "sse-notification": {
+          "requests": 500,
+          "successful": 500,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 197.7873202573561,
+          "latencyMs": {
+            "samples": 500,
+            "p50": 7.435249999998632,
+            "p95": 9.484040999999706,
+            "p99": 9.785334000000148,
+            "max": 9.908917000000656,
+            "mean": 7.080170043999933
+          },
+          "statusCounts": {
+            "200": 500
+          },
+          "requestBytes": 0,
+          "responseBytes": 24600
+        },
+        "sse-refresh-list": {
+          "requests": 500,
+          "successful": 500,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 197.7873202573561,
+          "latencyMs": {
+            "samples": 500,
+            "p50": 21.00500000000102,
+            "p95": 35.3312909999986,
+            "p99": 44.11216600000262,
+            "max": 45.07658399999855,
+            "mean": 20.800776093999943
+          },
+          "statusCounts": {
+            "200": 500
+          },
+          "requestBytes": 0,
+          "responseBytes": 14397600
+        },
+        "sse-refresh-review": {
+          "requests": 500,
+          "successful": 500,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 197.7873202573561,
+          "latencyMs": {
+            "samples": 500,
+            "p50": 8.0993750000016,
+            "p95": 21.351042000002053,
+            "p99": 31.804583000001003,
+            "max": 44.42804200000319,
+            "mean": 9.809095226000034
+          },
+          "statusCounts": {
+            "200": 500
+          },
+          "requestBytes": 0,
+          "responseBytes": 3019600
+        },
+        "sse-visible": {
+          "requests": 500,
+          "successful": 500,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 197.7873202573561,
+          "latencyMs": {
+            "samples": 500,
+            "p50": 90.96720899999855,
+            "p95": 113.93058400000155,
+            "p99": 121.9142090000023,
+            "max": 122.49308400000155,
+            "mean": 91.48212379000002
+          },
+          "statusCounts": {
+            "200": 500
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        }
+      },
+      "checks": [
+        {
+          "name": "all-notifications-received",
+          "passed": true,
+          "detail": {
+            "expected": 500,
+            "received": 500
+          },
+          "scenario": "sse-fanout-50"
+        },
+        {
+          "name": "all-subscribers-caught-up",
+          "passed": true,
+          "detail": {
+            "expected": 50,
+            "finalCaughtUp": 50,
+            "targetRevision": 11
+          },
+          "scenario": "sse-fanout-50"
+        },
+        {
+          "name": "no-unexpected-sse-disconnects",
+          "passed": true,
+          "detail": {
+            "disconnects": 0
+          },
+          "scenario": "sse-fanout-50"
+        }
+      ],
+      "resources": {
+        "samples": 2,
+        "peakRssBytes": 193347584,
+        "cpuPercentMax": 18.228806942507752,
+        "eventLoopDelayP95MsMax": 18.546687,
+        "eventLoopDelayMaxMs": 34.111487
+      },
+      "sse": {
+        "connections": 50,
+        "updates": 10,
+        "expectedNotifications": 500,
+        "receivedNotifications": 500,
+        "finalCaughtUp": 50,
+        "disconnects": 0,
+        "connectElapsedMs": 9.138291999999637,
+        "notificationLatencyMs": {
+          "samples": 500,
+          "p50": 7.435249999998632,
+          "p95": 9.484040999999706,
+          "p99": 9.785334000000148,
+          "max": 9.908917000000656,
+          "mean": 7.080170043999933
+        },
+        "visibleLatencyMs": {
+          "samples": 500,
+          "p50": 90.96720899999855,
+          "p95": 113.93058400000155,
+          "p99": 121.9142090000023,
+          "max": 122.49308400000155,
+          "mean": 91.48212379000002
+        },
+        "coalescedUpdates": 0
+      }
+    },
+    {
+      "name": "sse-fanout-100",
+      "description": "N条SSE长连接；收到通知后50ms合并、串行GET图片列表及review，模拟当前页面补查（无浏览器渲染）",
+      "concurrency": 100,
+      "elapsedMs": 2535.1280829999996,
+      "http": {
+        "requests": 2010,
+        "successful": 2010,
+        "failed": 0,
+        "errorRate": 0,
+        "rps": 792.8593484008202,
+        "latencyMs": {
+          "samples": 2010,
+          "p50": 18.421167000000423,
+          "p95": 44.04987499999697,
+          "p99": 52.58820900000137,
+          "max": 59.48775000000023,
+          "mean": 20.906378353731316
+        },
+        "statusCounts": {
+          "200": 2010
+        },
+        "requestBytes": 5001,
+        "responseBytes": 34898452
+      },
+      "byKind": {
+        "sse-connect": {
+          "requests": 100,
+          "successful": 100,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 39.44573872640896,
+          "latencyMs": {
+            "samples": 100,
+            "p50": 8.078708999997616,
+            "p95": 9.275166999999783,
+            "p99": 9.390000000003056,
+            "max": 9.411541999998008,
+            "mean": 8.248802069999984
+          },
+          "statusCounts": {
+            "200": 100
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        },
+        "sse-origin-write": {
+          "requests": 10,
+          "successful": 10,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 3.944573872640896,
+          "latencyMs": {
+            "samples": 10,
+            "p50": 4.780792000001384,
+            "p95": 9.388041000001976,
+            "p99": 9.388041000001976,
+            "max": 9.388041000001976,
+            "mean": 5.61631240000097
+          },
+          "statusCounts": {
+            "200": 10
+          },
+          "requestBytes": 5001,
+          "responseBytes": 61052
+        },
+        "sse-notification": {
+          "requests": 1000,
+          "successful": 1000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 394.4573872640896,
+          "latencyMs": {
+            "samples": 1000,
+            "p50": 6.032374999998865,
+            "p95": 10.961749999998574,
+            "p99": 11.838791999998648,
+            "max": 12.068707999998878,
+            "mean": 6.539109197999969
+          },
+          "statusCounts": {
+            "200": 1000
+          },
+          "requestBytes": 0,
+          "responseBytes": 50200
+        },
+        "sse-refresh-list": {
+          "requests": 1000,
+          "successful": 1000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 394.4573872640896,
+          "latencyMs": {
+            "samples": 1000,
+            "p50": 27.32691700000214,
+            "p95": 48.51466699999946,
+            "p99": 53.6181660000002,
+            "max": 55.949375000000146,
+            "mean": 26.295568045000017
+          },
+          "statusCounts": {
+            "200": 1000
+          },
+          "requestBytes": 0,
+          "responseBytes": 28796200
+        },
+        "sse-refresh-review": {
+          "requests": 1000,
+          "successful": 1000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 394.4573872640896,
+          "latencyMs": {
+            "samples": 1000,
+            "p50": 14.33795900000041,
+            "p95": 33.91795799999818,
+            "p99": 40.174041999998735,
+            "max": 59.48775000000023,
+            "mean": 15.670089321999926
+          },
+          "statusCounts": {
+            "200": 1000
+          },
+          "requestBytes": 0,
+          "responseBytes": 6041200
+        },
+        "sse-visible": {
+          "requests": 1000,
+          "successful": 1000,
+          "failed": 0,
+          "errorRate": 0,
+          "rps": 394.4573872640896,
+          "latencyMs": {
+            "samples": 1000,
+            "p50": 105.33666699999958,
+            "p95": 128.30462500000067,
+            "p99": 133.22354199999972,
+            "max": 134.45479200000045,
+            "mean": 101.47576671699997
+          },
+          "statusCounts": {
+            "200": 1000
+          },
+          "requestBytes": 0,
+          "responseBytes": 0
+        }
+      },
+      "checks": [
+        {
+          "name": "all-notifications-received",
+          "passed": true,
+          "detail": {
+            "expected": 1000,
+            "received": 1000
+          },
+          "scenario": "sse-fanout-100"
+        },
+        {
+          "name": "all-subscribers-caught-up",
+          "passed": true,
+          "detail": {
+            "expected": 100,
+            "finalCaughtUp": 100,
+            "targetRevision": 11
+          },
+          "scenario": "sse-fanout-100"
+        },
+        {
+          "name": "no-unexpected-sse-disconnects",
+          "passed": true,
+          "detail": {
+            "disconnects": 0
+          },
+          "scenario": "sse-fanout-100"
+        }
+      ],
+      "resources": {
+        "samples": 3,
+        "peakRssBytes": 199213056,
+        "cpuPercentMax": 27.644209072377706,
+        "eventLoopDelayP95MsMax": 26.083327,
+        "eventLoopDelayMaxMs": 38.109183
+      },
+      "sse": {
+        "connections": 100,
+        "updates": 10,
+        "expectedNotifications": 1000,
+        "receivedNotifications": 1000,
+        "finalCaughtUp": 100,
+        "disconnects": 0,
+        "connectElapsedMs": 12.521333000000595,
+        "notificationLatencyMs": {
+          "samples": 1000,
+          "p50": 6.032374999998865,
+          "p95": 10.961749999998574,
+          "p99": 11.838791999998648,
+          "max": 12.068707999998878,
+          "mean": 6.539109197999969
+        },
+        "visibleLatencyMs": {
+          "samples": 1000,
+          "p50": 105.33666699999958,
+          "p95": 128.30462500000067,
+          "p99": 133.22354199999972,
+          "max": 134.45479200000045,
+          "mean": 101.47576671699997
+        },
+        "coalescedUpdates": 0
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "read-response-shape",
+      "passed": true,
+      "detail": {
+        "invalidResponses": 0
+      },
+      "scenario": "read-read-normal-10"
+    },
+    {
+      "name": "read-response-shape",
+      "passed": true,
+      "detail": {
+        "invalidResponses": 0
+      },
+      "scenario": "read-read-normal-50"
+    },
+    {
+      "name": "read-response-shape",
+      "passed": true,
+      "detail": {
+        "invalidResponses": 0
+      },
+      "scenario": "read-read-normal-100"
+    },
+    {
+      "name": "read-response-shape",
+      "passed": true,
+      "detail": {
+        "invalidResponses": 0
+      },
+      "scenario": "read-read-maximum-100"
+    },
+    {
+      "name": "worker-0-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-1-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-2-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-3-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-4-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-5-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-6-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-7-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-8-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-9-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-10"
+    },
+    {
+      "name": "worker-0-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-1-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-2-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-3-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-4-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-5-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-6-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-7-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-8-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-9-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-10-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-11-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-12-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-13-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-14-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-15-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-16-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-17-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-18-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-19-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-20-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-21-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-22-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-23-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-24-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-25-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-26-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-27-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-28-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-29-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-30-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-31-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-32-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-33-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-34-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-35-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-36-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-37-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-38-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-39-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-40-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-41-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-42-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-43-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-44-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-45-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-46-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-47-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-48-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-49-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-50"
+    },
+    {
+      "name": "worker-0-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-1-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-2-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-3-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-4-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-5-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-6-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-7-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-8-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-9-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-10-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-11-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-12-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-13-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-14-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-15-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-16-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-17-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-18-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-19-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-20-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-21-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-22-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-23-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-24-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-25-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-26-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-27-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-28-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-29-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-30-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-31-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-32-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-33-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-34-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-35-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-36-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-37-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-38-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-39-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-40-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-41-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-42-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-43-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-44-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-45-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-46-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-47-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-48-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-49-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-50-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-51-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-52-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-53-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-54-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-55-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-56-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-57-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-58-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-59-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-60-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-61-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-62-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-63-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-64-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-65-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-66-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-67-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-68-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-69-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-70-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-71-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-72-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-73-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-74-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-75-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-76-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-77-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-78-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-79-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-80-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-81-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-82-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-83-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-84-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-85-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-86-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-87-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-88-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-89-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-90-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-91-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-92-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-93-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-94-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-95-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-96-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-97-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-98-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "worker-99-persisted",
+      "passed": true,
+      "detail": {
+        "acknowledged": 20,
+        "revision": 21,
+        "count": 10
+      },
+      "scenario": "write-independent-100"
+    },
+    {
+      "name": "all-concurrent-writes-acknowledged",
+      "passed": true,
+      "detail": {
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      },
+      "scenario": "same-marker-10"
+    },
+    {
+      "name": "all-distinct-contents-persisted",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "revision": 11,
+        "expected": 10
+      },
+      "scenario": "same-marker-10"
+    },
+    {
+      "name": "all-concurrent-writes-acknowledged",
+      "passed": true,
+      "detail": {
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      },
+      "scenario": "same-marker-50"
+    },
+    {
+      "name": "all-distinct-contents-persisted",
+      "passed": true,
+      "detail": {
+        "count": 50,
+        "revision": 51,
+        "expected": 50
+      },
+      "scenario": "same-marker-50"
+    },
+    {
+      "name": "all-concurrent-writes-acknowledged",
+      "passed": true,
+      "detail": {
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ]
+      },
+      "scenario": "same-marker-100"
+    },
+    {
+      "name": "all-distinct-contents-persisted",
+      "passed": true,
+      "detail": {
+        "count": 100,
+        "revision": 101,
+        "expected": 100
+      },
+      "scenario": "same-marker-100"
+    },
+    {
+      "name": "101st-change-rejected-atomically",
+      "passed": true,
+      "detail": {
+        "status": 409,
+        "code": "MERGE_LIMIT",
+        "count": 100,
+        "revision": 101
+      },
+      "scenario": "business-limit-101"
+    },
+    {
+      "name": "all-notifications-received",
+      "passed": true,
+      "detail": {
+        "expected": 100,
+        "received": 100
+      },
+      "scenario": "sse-fanout-10"
+    },
+    {
+      "name": "all-subscribers-caught-up",
+      "passed": true,
+      "detail": {
+        "expected": 10,
+        "finalCaughtUp": 10,
+        "targetRevision": 11
+      },
+      "scenario": "sse-fanout-10"
+    },
+    {
+      "name": "no-unexpected-sse-disconnects",
+      "passed": true,
+      "detail": {
+        "disconnects": 0
+      },
+      "scenario": "sse-fanout-10"
+    },
+    {
+      "name": "all-notifications-received",
+      "passed": true,
+      "detail": {
+        "expected": 500,
+        "received": 500
+      },
+      "scenario": "sse-fanout-50"
+    },
+    {
+      "name": "all-subscribers-caught-up",
+      "passed": true,
+      "detail": {
+        "expected": 50,
+        "finalCaughtUp": 50,
+        "targetRevision": 11
+      },
+      "scenario": "sse-fanout-50"
+    },
+    {
+      "name": "no-unexpected-sse-disconnects",
+      "passed": true,
+      "detail": {
+        "disconnects": 0
+      },
+      "scenario": "sse-fanout-50"
+    },
+    {
+      "name": "all-notifications-received",
+      "passed": true,
+      "detail": {
+        "expected": 1000,
+        "received": 1000
+      },
+      "scenario": "sse-fanout-100"
+    },
+    {
+      "name": "all-subscribers-caught-up",
+      "passed": true,
+      "detail": {
+        "expected": 100,
+        "finalCaughtUp": 100,
+        "targetRevision": 11
+      },
+      "scenario": "sse-fanout-100"
+    },
+    {
+      "name": "no-unexpected-sse-disconnects",
+      "passed": true,
+      "detail": {
+        "disconnects": 0
+      },
+      "scenario": "sse-fanout-100"
+    },
+    {
+      "name": "sqlite-integrity-check",
+      "passed": true,
+      "detail": "ok",
+      "scenario": "shutdown"
+    }
+  ],
+  "fatal": null,
+  "artifacts": {
+    "requests": "requests.jsonl",
+    "csv": "requests.csv",
+    "resources": "resources.jsonl",
+    "serverLog": "server-output.txt",
+    "database": "fixture.sqlite.gz",
+    "databaseInfo": "database-info.json"
+  },
+  "limitations": [
+    "并发数为闭环HTTP worker或SSE连接，不代表真实浏览器用户数。",
+    "客户端与服务端同机竞争CPU，loopback不含公网延迟；这些结果不是最大用户容量或生产SLA。",
+    "HTTP延迟包括客户端队列、传输、响应读取与JSON解析；不包括浏览器绘制。百分位按全部已完成请求计算，错误另列。",
+    "SSE可见延迟从保存请求开始计时，包含50ms合并及list+review补查；较新版本覆盖较旧通知时记为已追赶，而非每个中间版本都曾显示。",
+    "读取阶段限时且最多20000请求，耗时包括停止发起后的在途请求收尾；写入阶段为固定操作次数突发测试，未模拟用户思考时间。",
+    "HTTP RPS只包含测量请求；初始化、预热、验证查询不计入。业务上限101保护阶段预期409应单列，不是性能错误。",
+    "未覆盖上传解码、大图片下载、真实浏览器内存/渲染、长时间耐久测试、多服务器部署。",
+    "资源指标每秒采样，极短阶段可能没有样本；event-loop histogram分辨率10ms，不是完整CPU剖析。"
+  ]
+}

@@ -21,7 +21,8 @@
     "e2e:serve": "npm run db:setup && npm run build && npm start",
     "test:smoke": "node scripts/smoke.mjs",
     "measure": "node --import tsx scripts/measure.ts",
-    "format": "prettier --write apps packages scripts tests *.ts *.json"
+    "format": "prettier --write apps packages scripts tests *.ts *.json",
+    "test:load": "node scripts/load-test.mjs"
   },
   "dependencies": {
     "better-sqlite3": "^12.4.1",

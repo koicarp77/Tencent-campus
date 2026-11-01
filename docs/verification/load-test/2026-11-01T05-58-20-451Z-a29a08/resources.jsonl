@@ -1,0 +1,4 @@
+{"type":"load-metrics","timestamp":"2026-11-01T05:58:22.726Z","cpuPercent":99.27579481777683,"rssBytes":123027456,"heapUsedBytes":15428352,"eventLoopDelayP95Ms":10.584063,"eventLoopDelayMaxMs":11.468799,"scenario":"read-read-normal-2"}
+{"type":"load-metrics","timestamp":"2026-11-01T05:58:23.726Z","cpuPercent":101.12906905018882,"rssBytes":122912768,"heapUsedBytes":19429296,"eventLoopDelayP95Ms":10.690559,"eventLoopDelayMaxMs":11.862015,"scenario":"read-read-normal-5"}
+{"type":"load-metrics","timestamp":"2026-11-01T05:58:24.729Z","cpuPercent":99.27775135202054,"rssBytes":157171712,"heapUsedBytes":27302896,"eventLoopDelayP95Ms":12.640255,"eventLoopDelayMaxMs":13.041663,"scenario":"read-read-maximum-5"}
+{"type":"load-metrics","timestamp":"2026-11-01T05:58:25.729Z","cpuPercent":25.230989704750368,"rssBytes":157745152,"heapUsedBytes":17577376,"eventLoopDelayP95Ms":12.484607,"eventLoopDelayMaxMs":15.581183,"scenario":"sse-fanout-5"}
